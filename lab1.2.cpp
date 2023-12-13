@@ -1,29 +1,35 @@
 #include <stdio.h>
+#include <string.h>
 
-int *GetSet( int *num ) ;
+void GetSet( int array[], int *N ) ;
 
-int main() {
- int *data, num ;
- data = GetSet(&num) ;
- 	
- printf("All Member Input = [%d]\n",num);
+int main() 
+{
+	
+   int data[20],num;
+   GetSet(data, &num );
+   
+    printf("|--- Mamber ---|\n");
+    for (int i = 0; i < num; i++) {
+        printf("Member[%d] : %d \n",i+1,data[i]);
+    }
+    printf("|--- ALL Mamber Input : %d ---|", num);
  
- for (int i = 0; i < num; i++){
-	printf("Member[%d] : %d\n",i+1,data[i]);
-}
-
- delete[] data;
  return 0 ;
- 
+ 	
 }//end function
-int *GetSet( int *num ) {
-	int *n;
-	printf("Input Member : ");
-	scanf("%d",num);
-	n = new int[*num];
-	for(int i = 0; i < *num; i++){
-		printf("Data member %d : ", i+1 );
-        scanf("%d", &n[i]);
-	}
-	return n;
+
+void GetSet( int array[], int *N ) {
+	int i;
+	
+	 printf("Number Member : ");
+ 	 scanf("%d",N);
+ 	 
+ 	 printf("INPUT Data :\n");
+    for (i = 0; i < *N; i++) {
+        printf("Member %d : ", i+1);
+        scanf("%d", &array[i]);
+    }
+
+ 
 }

@@ -1,37 +1,29 @@
 #include <stdio.h>
-
-void GetMatrix( int **value, int *row, int *col ) ;
+int GetSet( int **data) ;
 
 int main() {
- int *data, m, n ;
- GetMatrix( &data, &m, &n ) ;
- 
- printf("row = [%d] colum =[%d] \n",m,n);
- 
- 	for( int i = 0 ; i < m; i++ ) {
-		for( int j = 0 ; j < n ; j++ ){
-			printf( "Data[ %d ][ %d ] = (%d) ", i, j, data[i * n+ j] ) ;
-	} //end j
-} //end i
- delete[] data;
- return 0 ;
-}
-void GetMatrix( int **value, int *row, int *col ) {
 	
-	printf( "----|Input Row and Column|----\n" ) ;
-	printf( "Enter row : " ) ;
-	scanf( "%d", row ) ;
-	printf( "Enter col : " ) ;
-	scanf( "%d", col ) ;
-	
-	*value = new int[*row* *col];
-	
-	for(int i = 0; i < *row; i++){
-		for(int j = 0; j < *col; j++){
-			printf("Data row & column |%d| |%d|  : ", i,j );
-        	scanf("%d", &(*value)[i* *col + j]);
-		} //end j
-	}//end i
-	
+ 	int *data, num ;
+ 	num = GetSet( &data) ;
+ 		printf("All Member Input = [%d] ",num);	
+    	 for (int i = 0; i < num; i++){
+	printf("Member[%d]:(%d)\n ",i+1,data[i]);
+	}
+    delete []data;
+ 	return 0 ;
 }
 
+int GetSet( int **data )
+{
+	int *num;
+    printf("Input Member : ");
+    scanf("%d", num) ;
+    
+    *data = new int[*num];
+    
+    for (int i = 0; i < *num; i++) {
+    	printf("Data  member %d:", i+1 );
+        scanf("%d", &(*data)[i]);
+    }
+    return *num;
+}
